@@ -1,0 +1,139 @@
+<div class="flex h-screen bg-tertiary">
+    <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-lg">
+            <div class="p-4 border-b border-gray-200">
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-10 h-10 bg-primary text-white rounded">
+                        <!-- <span class="font-['Pacifico'] text-xl">UIB</span> -->
+                         <img src="../../../../assets/logo.png">
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-lg font-semibold text-gray-800">UIB Bank</div>
+                        <div class="text-xs text-gray-500">Payment Gateway</div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Main</div>
+                <div class="mt-4 space-y-2">
+                    <div class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-dashboard-line"></i>
+                        </div>
+                        <span class="ml-3 text-sm">Dashboard</span>
+                    </div>
+                    <div class="sidebar-item active flex items-center px-4 py-3 text-primary font-medium hover:bg-gray-50 rounded cursor-pointer">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-wallet-3-line"></i>
+                        </div>
+                        <span class="ml-3 text-sm">Wallet Management</span>
+                    </div>
+                    <div class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-user-3-line"></i>
+                        </div>
+                        <span class="ml-3 text-sm">Customer Management</span>
+                    </div>
+                    <div class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-bank-card-line"></i>
+                        </div>
+                        <span class="ml-3 text-sm">Card Management</span>
+                    </div>
+                    <div class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-exchange-funds-line"></i>
+                        </div>
+                        <span class="ml-3 text-sm">Transactions</span>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Configuration</div>
+                    <div class="mt-4 space-y-2">
+                        <div class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-settings-3-line"></i>
+                            </div>
+                            <span class="ml-3 text-sm">System Settings</span>
+                        </div>
+                        <div class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-user-settings-line"></i>
+                            </div>
+                            <span class="ml-3 text-sm">User Management</span>
+                        </div>
+                        <div class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-file-list-3-line"></i>
+                            </div>
+                            <span class="ml-3 text-sm">Audit Logs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top Navigation -->
+            <header class="bg-gray-50/50 border-b border-gray-100">
+                <div class="flex items-center justify-between px-6 py-2">
+                    <div class="flex items-center space-x-8">
+                        <!-- <div class="flex items-center">
+                            <div class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded">
+                                <span class="font-['Pacifico'] text-sm">UIB</span>
+                            </div>
+                        </div> -->
+                        <div class="flex items-center space-x-6">
+                            <a href="#" class="text-sm text-gray-600 hover:text-primary">Dashboard</a>
+                            <a href="#" class="text-sm text-primary font-medium">Wallets</a>
+                            <a href="#" class="text-sm text-gray-600 hover:text-primary">Customers</a>
+                            <a href="#" class="text-sm text-gray-600 hover:text-primary">Cards</a>
+                            <a href="#" class="text-sm text-gray-600 hover:text-primary">Transactions</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <!-- <button class="flex items-center px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-sm hover:bg-gray-200">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-search-line"></i>
+                            </div>
+                            <span>Search</span>
+                        </button> -->
+                        <div class="relative">
+                            <div class="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-full cursor-pointer">
+                                <i class="ri-notification-3-line"></i>
+                                <span class="notification-badge">3</span>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <div class="flex items-center space-x-2 cursor-pointer" onclick="toggleDropdown(this)">
+                                <div class="w-10 h-10 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="w-full h-full flex items-center justify-center text-gray-500">
+                                        <i class="ri-user-3-line"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-700">John Anderson</div>
+                                    <div class="text-xs text-gray-500">Administrator</div>
+                                </div>
+                                <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </div>
+                            </div>
+                            <div class="dropdown-content hidden"> <!-- Added 'hidden' class -->
+                                <a href="https://readdy.ai/home/8ada4837-1bb3-48fe-a66b-c8928c687393/dece8a42-d11f-44b2-8883-a505cce10634" data-readdy="true" class="text-sm">My Profile</a>
+                                <a href="#" class="text-sm">Settings</a>
+                                <a href="#" class="text-sm">Help Center</a>
+                                <a href="#" class="text-sm text-primary">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main class="flex-1 overflow-y-auto p-6 custom-scrollbar" id="container">
+                <router-outlet ></router-outlet>
+            </main>
+
+        </div>
+
+</div>
