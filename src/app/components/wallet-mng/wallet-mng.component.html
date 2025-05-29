@@ -151,9 +151,9 @@
                     <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl">
                       <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
                         <h3 class="text-lg font-semibold text-gray-800">Create New Wallet</h3>
-                        <button id="close-create-wallet" class="text-gray-400 hover:text-gray-500">
+                        <button (click)="closeWalletForm()" id="close-create-wallet" class="text-gray-400 hover:text-gray-500">
                           <div class="w-6 h-6 flex items-center justify-center">
-                            <i (click)="closeWalletForm()" class="ri-close-line ri-lg"></i>
+                            <i class="ri-close-line ri-lg"></i>
                           </div>
                         </button>
                       </div>
@@ -477,7 +477,7 @@
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  <tr class="hover:bg-gray-50 cursor-pointer" data-wallet-id="1">
+                  <tr (click)="toggleWalletDetails()" class="hover:bg-gray-50 cursor-pointer" data-wallet-id="1">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="custom-checkbox" data-checkbox-id="1"></div>
                     </td>
@@ -726,13 +726,13 @@
             </div>
           </div>
           <!-- Wallet Detail Modal -->
-          <div id="wallet-detail-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+          <div *ngIf="isWalletDetailsVisible" id="wallet-detail-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
             <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
               <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-800">Wallet Details</h3>
                 <button id="close-wallet-detail" class="text-gray-400 hover:text-gray-500">
                   <div class="w-6 h-6 flex items-center justify-center">
-                    <i class="ri-close-line ri-lg"></i>
+                    <i (click)="closeWalletDetails()" class="ri-close-line ri-lg"></i>
                   </div>
                 </button>
               </div>
@@ -1195,7 +1195,7 @@
                 </div>
               </div>
               <div class="px-6 py-4 border-t border-gray-200 flex justify-end">
-                <button id="close-wallet-detail-btn" class="px-4 py-2 border border-gray-300 text-gray-700 rounded-button hover:bg-gray-50 transition text-sm whitespace-nowrap"> Close </button>
+                <button (click)="closeWalletDetails()" id="close-wallet-detail-btn" class="px-4 py-2 border border-gray-300 text-gray-700 rounded-button hover:bg-gray-50 transition text-sm whitespace-nowrap"> Close </button>
               </div>
             </div>
           </div>

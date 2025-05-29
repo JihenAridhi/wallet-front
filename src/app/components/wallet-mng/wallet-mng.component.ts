@@ -22,4 +22,16 @@ export class WalletMngComponent {
     this.isWalletFormVisible = false;
   }
 
+  isWalletDetailsVisible: boolean = false;
+
+  // Toggle the visibility of the wallet creation form
+  toggleWalletDetails(): void {
+    this.isWalletDetailsVisible = !this.isWalletDetailsVisible;
+  }
+
+  // Optional: Method to close the form (e.g., when clicking "Cancel")
+  closeWalletDetails(): void {
+    this.isWalletDetailsVisible = false;
+  }
+
 }
