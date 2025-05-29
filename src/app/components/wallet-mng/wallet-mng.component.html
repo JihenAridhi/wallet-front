@@ -140,20 +140,20 @@
               <div class="flex flex-wrap items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-800">Wallet Management</h3>
                 <div class="flex space-x-3">
-                  <button class="flex items-center px-4 py-2 bg-primary text-white rounded-button hover:bg-red-700 transition whitespace-nowrap">
+                  <button (click)="toggleWalletForm()" class="flex items-center px-4 py-2 bg-primary text-white rounded-button hover:bg-red-700 transition whitespace-nowrap">
                     <div class="w-5 h-5 flex items-center justify-center mr-1">
                       <i class="ri-add-line"></i>
                     </div>
                     <span>Create Wallet</span>
                   </button>
                   <!-- Create Wallet Modal -->
-                  <div id="create-wallet-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                  <div *ngIf="isWalletFormVisible" id="create-wallet-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
                     <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl">
                       <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
                         <h3 class="text-lg font-semibold text-gray-800">Create New Wallet</h3>
                         <button id="close-create-wallet" class="text-gray-400 hover:text-gray-500">
                           <div class="w-6 h-6 flex items-center justify-center">
-                            <i class="ri-close-line ri-lg"></i>
+                            <i (click)="closeWalletForm()" class="ri-close-line ri-lg"></i>
                           </div>
                         </button>
                       </div>
@@ -271,7 +271,7 @@
                         </div>
                       </form>
                       <div class="px-6 py-4 border-t border-gray-200 flex justify-end space-x-3">
-                        <button id="cancel-create-wallet" class="px-4 py-2 border border-gray-300 text-gray-700 rounded-button hover:bg-gray-50 transition text-sm whitespace-nowrap">Cancel</button>
+                        <button (click)="closeWalletForm()" id="cancel-create-wallet" class="px-4 py-2 border border-gray-300 text-gray-700 rounded-button hover:bg-gray-50 transition text-sm whitespace-nowrap">Cancel</button>
                         <button id="submit-create-wallet" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-red-700 transition text-sm whitespace-nowrap">Create Wallet</button>
                       </div>
                     </div>

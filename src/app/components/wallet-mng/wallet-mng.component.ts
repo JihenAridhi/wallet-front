@@ -1,14 +1,25 @@
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import * as echarts from 'echarts';
 
 @Component({
   selector: 'app-wallet-mng',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './wallet-mng.component.html',
   styleUrl: './wallet-mng.component.css'
 })
 export class WalletMngComponent {
 
-  
+  isWalletFormVisible: boolean = false;
+
+  // Toggle the visibility of the wallet creation form
+  toggleWalletForm(): void {
+    this.isWalletFormVisible = !this.isWalletFormVisible;
+  }
+
+  // Optional: Method to close the form (e.g., when clicking "Cancel")
+  closeWalletForm(): void {
+    this.isWalletFormVisible = false;
+  }
 
 }
