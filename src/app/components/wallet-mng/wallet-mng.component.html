@@ -376,14 +376,14 @@
                 </div>
               </div>
               <div class="mt-4">
-                <button class="text-sm text-primary flex items-center" id="advanced-filter-toggle">
+                <button (click)="toggleAdvancedFilter()" class="text-sm text-primary flex items-center" id="advanced-filter-toggle">
                   <div class="w-5 h-5 flex items-center justify-center mr-1">
                     <i class="ri-filter-3-line"></i>
                   </div>
                   <span>Advanced Filters</span>
                 </button>
               </div>
-              <div id="advanced-filters" class="hidden mt-4 pt-4 border-t border-gray-200">
+              <div *ngIf="isAdvancedFilterVisible" id="advanced-filters" class="mt-4 pt-4 border-t border-gray-200">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Balance Range</label>
@@ -727,7 +727,7 @@
           </div>
           <!-- Wallet Detail Modal -->
           <div *ngIf="isWalletDetailsVisible" id="wallet-detail-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
-            <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl h-[90vh] overflow-hidden">
               <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-800">Wallet Details</h3>
                 <button id="close-wallet-detail" class="text-gray-400 hover:text-gray-500">
@@ -736,9 +736,9 @@
                   </div>
                 </button>
               </div>
-              <div class="p-6 overflow-y-auto custom-scrollbar" style="max-height: calc(90vh - 130px);">
+              <div class="p-6 overflow-y-auto custom-scrollbar" style="height: calc(90vh - 130px);">
                 <div class="flex flex-col md:flex-row md:space-x-6">
-                  <div class="md:w-1/3 mb-6 md:mb-0">
+                  <div class="mb-6 md:mb-0">
                     <div class="bg-gray-50 p-4 rounded-lg">
                       <div class="text-center mb-4">
                         <div class="w-20 h-20 mx-auto bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary">
@@ -778,10 +778,10 @@
                   <div class="md:w-2/3">
                     <div class="mb-6">
                       <div class="flex border-b border-gray-200">
-                        <button class="tab-button active px-4 py-2 text-primary font-medium"> Basic Info </button>
-                        <button class="tab-button px-4 py-2 text-gray-500"> Balance </button>
-                        <button class="tab-button px-4 py-2 text-gray-500"> Relationships </button>
-                        <button class="tab-button px-4 py-2 text-gray-500"> Operations </button>
+                        <button class="tab-button px-4 py-2 text-primary font-medium active" id="basic-info" (click)="showTab('basic-info')"> Basic Info </button>
+                        <button class="tab-button px-4 py-2 text-gray-500" id="balance" (click)="showTab('balance')"> Balance </button>
+                        <button class="tab-button px-4 py-2 text-gray-500" id="relationships" (click)="showTab('relationships')"> Relationships </button>
+                        <button class="tab-button px-4 py-2 text-gray-500" id="operations" (click)="showTab('operations')"> Operations </button>
                       </div>
                     </div>
                     <div id="tab-basic-info" class="tab-content">
@@ -1201,389 +1201,3 @@
           </div>
         
 
-        <script id="charts-script">
-            document.addEventListener('DOMContentLoaded', function() {
-              // Wallet Distribution Chart
-              const walletDistributionChart = echarts.init(document.getElementById('wallet-distribution-chart'));
-              const walletDistributionOption = {
-                animation: false,
-                tooltip: {
-                  trigger: 'item',
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  borderColor: '#e2e8f0',
-                  borderWidth: 1,
-                  textStyle: {
-                    color: '#1f2937'
-                  }
-                },
-                legend: {
-                  top: 'bottom',
-                  left: 'center',
-                  textStyle: {
-                    color: '#1f2937'
-                  }
-                },
-                series: [{
-                  name: 'Wallet Distribution',
-                  type: 'pie',
-                  radius: ['40%', '70%'],
-                  avoidLabelOverlap: false,
-                  itemStyle: {
-                    borderRadius: 8,
-                    borderColor: '#fff',
-                    borderWidth: 2
-                  },
-                  label: {
-                    show: false,
-                    position: 'center'
-                  },
-                  emphasis: {
-                    label: {
-                      show: true,
-                      fontSize: '14',
-                      fontWeight: 'bold',
-                      color: '#1f2937'
-                    }
-                  },
-                  labelLine: {
-                    show: false
-                  },
-                  data: [{
-                    value: 3754,
-                    name: 'Active',
-                    itemStyle: {
-                      color: 'rgba(87, 181, 231, 1)'
-                    }
-                  }, {
-                    value: 245,
-                    name: 'Suspended',
-                    itemStyle: {
-                      color: 'rgba(141, 211, 199, 1)'
-                    }
-                  }, {
-                    value: 298,
-                    name: 'Inactive',
-                    itemStyle: {
-                      color: 'rgba(251, 191, 114, 1)'
-                    }
-                  }, {
-                    value: 31,
-                    name: 'Error',
-                    itemStyle: {
-                      color: 'rgba(252, 141, 98, 1)'
-                    }
-                  }]
-                }]
-              };
-              walletDistributionChart.setOption(walletDistributionOption);
-              // Balance Trends Chart
-              const balanceTrendsChart = echarts.init(document.getElementById('balance-trends-chart'));
-              const balanceTrendsOption = {
-                animation: false,
-                tooltip: {
-                  trigger: 'axis',
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  borderColor: '#e2e8f0',
-                  borderWidth: 1,
-                  textStyle: {
-                    color: '#1f2937'
-                  }
-                },
-                grid: {
-                  left: '3%',
-                  right: '4%',
-                  bottom: '3%',
-                  containLabel: true
-                },
-                xAxis: {
-                  type: 'category',
-                  boundaryGap: false,
-                  data: ['Apr 22', 'Apr 29', 'May 6', 'May 13', 'May 20'],
-                  axisLine: {
-                    lineStyle: {
-                      color: '#d1d5db'
-                    }
-                  },
-                  axisLabel: {
-                    color: '#1f2937'
-                  }
-                },
-                yAxis: {
-                  type: 'value',
-                  axisLine: {
-                    lineStyle: {
-                      color: '#d1d5db'
-                    }
-                  },
-                  axisLabel: {
-                    color: '#1f2937',
-                    formatter: function(value) {
-                      return '$' + value.toLocaleString();
-                    }
-                  },
-                  splitLine: {
-                    lineStyle: {
-                      color: '#e5e7eb'
-                    }
-                  }
-                },
-                series: [{
-                  name: 'Effective Balance',
-                  type: 'line',
-                  smooth: true,
-                  lineStyle: {
-                    width: 3,
-                    color: 'rgba(87, 181, 231, 1)'
-                  },
-                  areaStyle: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                      offset: 0,
-                      color: 'rgba(87, 181, 231, 0.3)'
-                    }, {
-                      offset: 1,
-                      color: 'rgba(87, 181, 231, 0.1)'
-                    }])
-                  },
-                  emphasis: {
-                    focus: 'series'
-                  },
-                  data: [7200000, 7450000, 7650000, 7820000, 7842000]
-                }, {
-                  name: 'Active Wallets',
-                  type: 'line',
-                  smooth: true,
-                  lineStyle: {
-                    width: 3,
-                    color: 'rgba(141, 211, 199, 1)'
-                  },
-                  areaStyle: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                      offset: 0,
-                      color: 'rgba(141, 211, 199, 0.3)'
-                    }, {
-                      offset: 1,
-                      color: 'rgba(141, 211, 199, 0.1)'
-                    }])
-                  },
-                  emphasis: {
-                    focus: 'series'
-                  },
-                  data: [3450, 3520, 3610, 3680, 3754]
-                }]
-              };
-              balanceTrendsChart.setOption(balanceTrendsOption);
-              // Balance History Chart (in modal)
-              const balanceHistoryChart = echarts.init(document.getElementById('balance-history-chart'));
-              const balanceHistoryOption = {
-                animation: false,
-                tooltip: {
-                  trigger: 'axis',
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  borderColor: '#e2e8f0',
-                  borderWidth: 1,
-                  textStyle: {
-                    color: '#1f2937'
-                  }
-                },
-                grid: {
-                  left: '3%',
-                  right: '4%',
-                  bottom: '3%',
-                  containLabel: true
-                },
-                xAxis: {
-                  type: 'category',
-                  boundaryGap: false,
-                  data: ['Apr 22', 'Apr 29', 'May 6', 'May 13', 'May 20'],
-                  axisLine: {
-                    lineStyle: {
-                      color: '#d1d5db'
-                    }
-                  },
-                  axisLabel: {
-                    color: '#1f2937'
-                  }
-                },
-                yAxis: {
-                  type: 'value',
-                  axisLine: {
-                    lineStyle: {
-                      color: '#d1d5db'
-                    }
-                  },
-                  axisLabel: {
-                    color: '#1f2937',
-                    formatter: function(value) {
-                      return '$' + value.toLocaleString();
-                    }
-                  },
-                  splitLine: {
-                    lineStyle: {
-                      color: '#e5e7eb'
-                    }
-                  }
-                },
-                series: [{
-                  name: 'Balance',
-                  type: 'line',
-                  smooth: true,
-                  lineStyle: {
-                    width: 3,
-                    color: 'rgba(87, 181, 231, 1)'
-                  },
-                  areaStyle: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                      offset: 0,
-                      color: 'rgba(87, 181, 231, 0.3)'
-                    }, {
-                      offset: 1,
-                      color: 'rgba(87, 181, 231, 0.1)'
-                    }])
-                  },
-                  emphasis: {
-                    focus: 'series'
-                  },
-                  data: [10500, 11200, 10700, 11700, 12458]
-                }]
-              };
-              balanceHistoryChart.setOption(balanceHistoryOption);
-              // Handle window resize
-              window.addEventListener('resize', function() {
-                walletDistributionChart.resize();
-                balanceTrendsChart.resize();
-                balanceHistoryChart.resize();
-              });
-            });
-          </script>
-          <script id="ui-interactions-script">
-            document.addEventListener('DOMContentLoaded', function() {
-              // Actions Dropdown
-              const actionsDropdownBtn = document.getElementById('actions-dropdown-btn');
-              const actionsDropdownContent = document.getElementById('actions-dropdown-content');
-              actionsDropdownBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                actionsDropdownContent.classList.toggle('hidden');
-              });
-              document.addEventListener('click', function(e) {
-                if (!actionsDropdownBtn.contains(e.target)) {
-                  actionsDropdownContent.classList.add('hidden');
-                }
-              });
-              // Create Wallet Modal
-              const createWalletBtn = document.querySelector('button:has(.ri-add-line)');
-              const createWalletModal = document.getElementById('create-wallet-modal');
-              const closeCreateWalletBtn = document.getElementById('close-create-wallet');
-              const cancelCreateWalletBtn = document.getElementById('cancel-create-wallet');
-              const createWalletForm = document.getElementById('create-wallet-form');
-              const submitCreateWalletBtn = document.getElementById('submit-create-wallet');
-              createWalletBtn.addEventListener('click', function() {
-                createWalletModal.classList.remove('hidden');
-              });
-          
-              function closeCreateWalletModal() {
-                createWalletModal.classList.add('hidden');
-                createWalletForm.reset();
-              }
-              closeCreateWalletBtn.addEventListener('click', closeCreateWalletModal);
-              cancelCreateWalletBtn.addEventListener('click', closeCreateWalletModal);
-              submitCreateWalletBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (createWalletForm.checkValidity()) {
-                  const formData = new FormData(createWalletForm);
-                  const walletData = Object.fromEntries(formData.entries());
-                  console.log('Wallet Data:', walletData);
-                  closeCreateWalletModal();
-                  // Show success message
-                  const successMessage = document.createElement('div');
-                  successMessage.className = 'fixed top-4 right-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded z-50';
-                  successMessage.innerHTML = `
-                  
-      																						<div class="flex items-center">
-      																							<div class="w-5 h-5 flex items-center justify-center mr-2">
-      																								<i class="ri-checkbox-circle-line"></i>
-      																							</div>
-      																							<span>Wallet created successfully!</span>
-      																						</div>
-      `;
-                  document.body.appendChild(successMessage);
-                  setTimeout(() => successMessage.remove(), 3000);
-                } else {
-                  createWalletForm.reportValidity();
-                }
-              });
-              // Advanced Filters Toggle
-              const advancedFilterToggle = document.getElementById('advanced-filter-toggle');
-              const advancedFilters = document.getElementById('advanced-filters');
-              advancedFilterToggle.addEventListener('click', function() {
-                advancedFilters.classList.toggle('hidden');
-              });
-              // Custom Checkboxes
-              const checkboxes = document.querySelectorAll('.custom-checkbox');
-              const selectAllCheckbox = document.getElementById('select-all-checkbox');
-              checkboxes.forEach(function(checkbox) {
-                checkbox.addEventListener('click', function() {
-                  this.classList.toggle('checked');
-                  // If this is not the select-all checkbox, check if all checkboxes are selected
-                  if (this.id !== 'select-all-checkbox') {
-                    const allChecked = Array.from(document.querySelectorAll('.custom-checkbox[data-checkbox-id]')).every(cb => cb.classList.contains('checked'));
-                    if (allChecked) {
-                      selectAllCheckbox.classList.add('checked');
-                    } else {
-                      selectAllCheckbox.classList.remove('checked');
-                    }
-                  }
-                });
-              });
-              // Select All Checkbox
-              if (selectAllCheckbox) {
-                selectAllCheckbox.addEventListener('click', function() {
-                  const isChecked = this.classList.contains('checked');
-                  const rowCheckboxes = document.querySelectorAll('.custom-checkbox[data-checkbox-id]');
-                  rowCheckboxes.forEach(function(checkbox) {
-                    if (isChecked) {
-                      checkbox.classList.remove('checked');
-                    } else {
-                      checkbox.classList.add('checked');
-                    }
-                  });
-                });
-              }
-              // Wallet Detail Modal
-              const walletRows = document.querySelectorAll('tr[data-wallet-id]');
-              const walletDetailModal = document.getElementById('wallet-detail-modal');
-              const closeWalletDetail = document.getElementById('close-wallet-detail');
-              const closeWalletDetailBtn = document.getElementById('close-wallet-detail-btn');
-              walletRows.forEach(function(row) {
-                row.addEventListener('click', function(e) {
-                  // Don't open modal if clicking on checkboxes or action buttons
-                  if (e.target.closest('.custom-checkbox') || e.target.closest('button')) {
-                    return;
-                  }
-                  walletDetailModal.classList.remove('hidden');
-                });
-              });
-              if (closeWalletDetail) {
-                closeWalletDetail.addEventListener('click', function() {
-                  walletDetailModal.classList.add('hidden');
-                });
-              }
-              if (closeWalletDetailBtn) {
-                closeWalletDetailBtn.addEventListener('click', function() {
-                  walletDetailModal.classList.add('hidden');
-                });
-              }
-              // Tab Switching in Modal
-              const tabButtons = document.querySelectorAll('.tab-button');
-              const tabContents = document.querySelectorAll('.tab-content');
-              tabButtons.forEach(function(button, index) {
-                button.addEventListener('click', function() {
-                  // Remove active class from all buttons and hide all contents
-                  tabButtons.forEach(btn => btn.classList.remove('active'));
-                  tabContents.forEach(content => content.classList.add('hidden'));
-                  // Add active class to clicked button and show corresponding content
-                  this.classList.add('active');
-                  tabContents[index].classList.remove('hidden');
-                });
-              });
-            });
-          </script>
