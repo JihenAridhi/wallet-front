@@ -3,7 +3,7 @@
         font-family: 'Inter', sans-serif;
         background-color: #f8f9fa;
         } */
-        #container{
+        #mainContent{
             height: 100%;
         }
         .sidebar-item.active {
@@ -229,4 +229,11 @@
         input[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
+        }
+
+        .sidebar-item.active {
+          border-left: 4px solid #E31937;
+          background-color: rgba(227, 25, 55, 0.05);
+          color: #E31937;
+          font-weight: 500;
         }
