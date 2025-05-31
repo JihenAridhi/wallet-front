@@ -1,56 +1,57 @@
 <div class="flex h-screen bg-tertiary">
     <!-- Sidebar -->
-        <div id="sidebar" class="w-64 bg-white shadow-lg">
+        <div id="sidebar" class="relative w-64 bg-white shadow-lg  transition-all duration-300" [class.w-16]="isCollapsed">
             <div class="h-16 p-4 border-b border-gray-200 flex items-center">
                 <div class="flex items-center">
-                    <div class="flex items-center justify-center w-10 h-10 bg-primary text-white rounded">
+                    <div class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded">
                         <!-- <span class="font-['Pacifico'] text-xl">UIB</span> -->
                          <img src="../../../../assets/logo.png">
                     </div>
-                    <div class="ml-3">
+                    <div class="ml-3" [class.hidden]="isCollapsed">
                         <div class="text-lg font-semibold text-gray-800">UIB Bank</div>
                         <div class="text-xs text-gray-500">Payment Gateway</div>
                     </div>
                 </div>
             </div>
-            <div class="p-4">
+            
+            <div class="p-4" [class.px-2]="isCollapsed">
                 <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Main</div>
                 <div class="mt-4 space-y-2">
                     <a routerLink="/admin/dashboard" routerLinkActive="active" class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
                         <div class="w-5 h-5 flex items-center justify-center">
                             <i class="ri-dashboard-line"></i>
                         </div>
-                        <span class="ml-3 text-sm">Dashboard</span>
+                        <span class="ml-3 text-sm" [class.hidden]="isCollapsed">Dashboard</span>
                     </a>
-                    <a routerLink="/admin/wallets" routerLinkActive="active" class="sidebar-item active flex items-center px-4 py-3 text-gray-600 font-medium hover:bg-gray-50 rounded cursor-pointer">
+                    <a routerLink="/admin/wallets" routerLinkActive="active" class="sidebar-item active flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
                         <div class="w-5 h-5 flex items-center justify-center">
                             <i class="ri-wallet-3-line"></i>
                         </div>
-                        <span class="ml-3 text-sm">Wallet Management</span>
+                        <span class="ml-3 text-sm" [class.hidden]="isCollapsed">Wallet Management</span>
                     </a>
                     <a routerLink="/admin/accounting" routerLinkActive="active" class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
                         <div class="w-5 h-5 flex items-center justify-center">
                             <i class="ri-calculator-line"></i>
                         </div>
-                        <span class="ml-3 text-sm">Accounting Schema</span>
+                        <span class="ml-3 text-sm" [class.hidden]="isCollapsed">Accounting Schema</span>
                     </a>
                     <a routerLink="/admin/customers" routerLinkActive="active" class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
                         <div class="w-5 h-5 flex items-center justify-center">
                             <i class="ri-user-3-line"></i>
                         </div>
-                        <span class="ml-3 text-sm">Customer Management</span>
+                        <span class="ml-3 text-sm" [class.hidden]="isCollapsed">Customer Management</span>
                     </a>
                     <a routerLink="/admin/cards" routerLinkActive="active" class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
                         <div class="w-5 h-5 flex items-center justify-center">
                             <i class="ri-bank-card-line"></i>
                         </div>
-                        <span class="ml-3 text-sm">Card Management</span>
+                        <span class="ml-3 text-sm" [class.hidden]="isCollapsed">Card Management</span>
                     </a>
                     <a routerLink="/admin/transactions" routerLinkActive="active" class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
                         <div class="w-5 h-5 flex items-center justify-center">
                             <i class="ri-exchange-funds-line"></i>
                         </div>
-                        <span class="ml-3 text-sm">Transactions</span>
+                        <span class="ml-3 text-sm" [class.hidden]="isCollapsed">Transactions</span>
                     </a>
                 </div>
                 <div class="mt-8">
@@ -60,30 +61,30 @@
                             <div class="w-5 h-5 flex items-center justify-center">
                                 <i class="ri-settings-3-line"></i>
                             </div>
-                            <span class="ml-3 text-sm">System Settings</span>
+                            <span class="ml-3 text-sm" [class.hidden]="isCollapsed">System Settings</span>
                         </a>
                         <a routerLink="users" routerLinkActive="active" class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
                             <div class="w-5 h-5 flex items-center justify-center">
                                 <i class="ri-user-settings-line"></i>
                             </div>
-                            <span class="ml-3 text-sm">User Management</span>
+                            <span class="ml-3 text-sm" [class.hidden]="isCollapsed">User Management</span>
                         </a>
                         <a routerLink="/admin/audit" routerLinkActive="active" class="sidebar-item flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
                             <div class="w-5 h-5 flex items-center justify-center">
                                 <i class="ri-file-list-3-line"></i>
                             </div>
-                            <span class="ml-3 text-sm">Audit Logs</span>
+                            <span class="ml-3 text-sm" [class.hidden]="isCollapsed">Audit Logs</span>
                         </a>
                     </div>
                 </div>
             </div>
-            <!-- <button id="toggleSidebar" (click)="toggleSidebar()" class="absolute -right-3 top-20 bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center">
-                <i class="ri-arrow-left-s-line"></i>
-            </button> -->
+            <button id="toggleSidebar" (click)="toggleSidebar()" class="absolute -right-3 top-12 bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center">
+                <i class="ri-arrow-left-s-line" [class.rotate-180]="isCollapsed"></i>
+            </button>
         </div>
-
+        
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div id="mainContent" class="flex-1 flex flex-col overflow-hidden transition-all duration-300 " >
             <!-- Top Navigation -->
             <header class="h-16 bg-gray-50/50 border-b border-gray-100  items-center px-6">
                 <div class="flex items-center justify-end px-6 py-2">
@@ -128,7 +129,7 @@
                     </div>
                 </div>
             </header>
-            <main class="flex-1 overflow-y-auto  custom-scrollbar" id="mainContent">
+            <main class="flex-1 overflow-y-auto py-6 custom-scrollbar" id="mainContent">
                 <router-outlet ></router-outlet>
                 <footer class="text-center text-sm text-gray-500 py-4 border-t border-gray-200">
                   &copy; {{ currentYear }} Your Company. All rights reserved.

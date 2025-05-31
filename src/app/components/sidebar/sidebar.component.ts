@@ -19,7 +19,7 @@ export class SidebarComponent {
     if (sidebar && mainContent) {
       sidebar.classList.toggle('collapsed');
       mainContent.classList.toggle('expanded');
-      (mainContent as HTMLElement).style.marginLeft = this.isCollapsed ? '80px' : '260px';
+      /* (mainContent as HTMLElement).style.marginLeft = this.isCollapsed ? '80px' : '260px'; */
     }
   }
 
