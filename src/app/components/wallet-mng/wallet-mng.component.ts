@@ -20,7 +20,7 @@ export class WalletMngComponent {
 
   // Toggle the visibility of the wallet creation form
   toggleWalletForm(): void {
-    this.isWalletFormVisible = !this.isWalletFormVisible;
+    this.isWalletFormVisible = true;
   }
   // Optional: Method to close the form (e.g., when clicking "Cancel")
   closeWalletForm(): void {
@@ -29,7 +29,7 @@ export class WalletMngComponent {
 
   // Toggle the visibility of the wallet creation form
   toggleWalletDetails(): void {
-    this.isWalletDetailsVisible = !this.isWalletDetailsVisible;
+    this.isWalletDetailsVisible = true;
   }
   // Optional: Method to close the form (e.g., when clicking "Cancel")
   closeWalletDetails(): void {
@@ -38,7 +38,7 @@ export class WalletMngComponent {
 
   // Toggle the advanced filter
   toggleAdvancedFilter(): void {
-    this.isAdvancedFilterVisible = !this.isAdvancedFilterVisible;
+    this.isAdvancedFilterVisible = true;
   }
 
   showTab(tabId: string): void {

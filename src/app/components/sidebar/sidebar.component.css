@@ -3,30 +3,6 @@
         font-family: 'Inter', sans-serif;
         background-color: #f8f9fa;
         } */
-         .sidebar {
-            width: 260px;
-            transition: all 0.3s ease;
-        }
-        .main-content {
-            width: calc(100% - 260px);
-            transition: all 0.3s ease;
-        }
-        .sidebar.collapsed {
-            width: 80px;
-        }
-        .main-content.expanded {
-            width: calc(100% - 80px);
-        }
-        .nav-item span {
-            transition: opacity 0.3s ease;
-        }
-        .sidebar.collapsed .nav-item span,
-        .sidebar.collapsed .logo-text,
-        .sidebar.collapsed .sidebar-footer span {
-            opacity: 0;
-            display: none;
-            
-        }
         #mainContent{
             height: 100%;
         }

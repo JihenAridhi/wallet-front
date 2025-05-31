@@ -43,17 +43,29 @@
               <i class="ri-search-line text-gray-400"></i>
             </div>
           </div>
+          <div class="flex items-center space-x-3">
+            <button class="flex items-center px-3 py-2 border border-gray-300 rounded-button text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 whitespace-nowrap">
+              <div class="w-4 h-4 mr-2 flex items-center justify-center">
+                <i class="ri-download-2-line"></i>
+              </div> Export Data
+            </button>
+            <button (click)="toggleSchemaForm()" id="newSchemaBtn" class="flex items-center px-3 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-opacity-90 whitespace-nowrap">
+              <div class="w-4 h-4 mr-2 flex items-center justify-center">
+                <i class="ri-add-line"></i>
+              </div> New Schema
+            </button>
+          </div>
         </div>
       </header>
       <div class="bg-white border-b mx-6">
         <div class="px-6 flex">
           <button class="tab-button active px-4 py-3 text-sm font-medium text-primary" data-tab="schemas">Schemas</button>
-          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" data-tab="operationTypes">Operation Types</button>
-          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" data-tab="feesCommissions">Fees & Commissions</button>
-          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" data-tab="categoryMappings">Category Mappings</button>
-          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" data-tab="balanceHistory">Balance History</button>
-          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" data-tab="vatRates">VAT Rates</button>
-          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" data-tab="profileManagement">Profile Management</button>
+          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" (click)="showTab('operationTypes')" id="operationTypes">Operation Types</button>
+          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" (click)="showTab('feesCommissions')" id="feesCommissions">Fees & Commissions</button>
+          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" (click)="showTab('categoryMappings')" id="categoryMappings">Category Mappings</button>
+          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" (click)="showTab('balanceHistory')" id="balanceHistory">Balance History</button>
+          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" (click)="showTab('vatRates')" id="vatRates">VAT Rates</button>
+          <button class="tab-button px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900" (click)="showTab('profileManagement')" id="profileManagement">Profile Management</button>
         </div>
       </div>
       <!-- Main Content Area -->
@@ -383,17 +395,17 @@
         </div>
       </main>
     <!-- New Schema Modal -->
-    <div id="newSchemaModal" class="modal hidden fixed inset-0 z-50 overflow-y-auto flex items-center justify-center bg-black bg-opacity-50">
-      <div class="modal-content bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 transform">
+    <div *ngIf="isNewSchemaVisible" id="newSchemaModal" class="fixed inset-0 z-50  bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 transform">
         <div class="flex justify-between items-center p-6 border-b">
           <h3 class="text-lg font-medium">Create New Accounting Schema</h3>
           <button id="closeSchemaModal" class="text-gray-400 hover:text-gray-500">
-            <div class="w-5 h-5 flex items-center justify-center">
+            <div (click)="closeSchemaForm()" class="w-5 h-5 flex items-center justify-center"> 
               <i class="ri-close-line"></i>
             </div>
           </button>
         </div>
-        <div class="p-6">
+        <div class="p-6 overflow-y-auto max-h-[70vh]">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="col-span-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">Operation Type Details</label>
@@ -725,19 +737,19 @@
             </button>
           </div>
         </div>
-      </div>
-      <div class="px-6 py-4 border-t flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-          <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
-          <span class="text-sm text-gray-600">All fields are required</span>
-        </div>
-        <div class="flex space-x-3">
-          <button id="cancelSchemaBtn" class="px-4 py-2 border border-gray-300 rounded-button text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 whitespace-nowrap">Cancel</button>
-          <button class="px-4 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-opacity-90 whitespace-nowrap flex items-center">
-            <div class="w-4 h-4 mr-2 flex items-center justify-center">
-              <i class="ri-save-line"></i>
-            </div> Save Schema
-          </button>
+        <div class="px-6 py-4 border-t flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+              <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+              <span class="text-sm text-gray-600">All fields are required</span>
+            </div>
+            <div class="flex space-x-3">
+              <button (click)="closeSchemaForm()" id="cancelSchemaBtn" class="px-4 py-2 border border-gray-300 rounded-button text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 whitespace-nowrap">Cancel</button>
+              <button class="px-4 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-opacity-90 whitespace-nowrap flex items-center">
+                <div class="w-4 h-4 mr-2 flex items-center justify-center">
+                  <i class="ri-save-line"></i>
+                </div> Save Schema
+              </button>
+            </div>
         </div>
       </div>
     </div>
