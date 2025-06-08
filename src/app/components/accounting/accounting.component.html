@@ -70,7 +70,7 @@
       </div>
       <!-- Main Content Area -->
       <main class="flex-1 overflow-y-auto p-6">
-        <div id="tab-schemas" class="space-y-6 tab-content">
+        <div id="tab-schemas" class="space-y-6 tab-content transition-all ease-in-out ">
             <!-- Analytics Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
               <div class="bg-white rounded-lg shadow p-5">
@@ -434,7 +434,7 @@
         </div>
 
         <!-- operation types tab-->
-        <div id="tab-operationTypes" class="hidden tab-content rounded-lg shadow overflow-hidden">
+        <div id="tab-operationTypes" class="hidden tab-content transition-all ease-in-out rounded-lg shadow overflow-hidden">
         	<div class="p-4 border-b flex justify-between items-center">
         		<h2 class="text-lg font-medium">Operation Types</h2>
         		<button (click)="toggleForm('operation')" id="newOperationTypeBtn" class="flex items-center px-3 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-opacity-90 whitespace-nowrap">
@@ -512,7 +512,7 @@
         </div>
 
         <!-- fees and commission -->
-         <div id="tab-feesCommissions" class="hidden tab-content bg-white rounded-lg shadow overflow-hidden">
+         <div id="tab-feesCommissions" class="hidden tab-content transition-all ease-in-out bg-white rounded-lg shadow overflow-hidden">
 			<div class="p-4 border-b flex justify-between items-center">
 				<h2 class="text-lg font-medium">Fees & Commissions</h2>
 				<button  (click)="toggleForm('fee')" class="flex items-center px-3 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-opacity-90 whitespace-nowrap">
@@ -603,7 +603,7 @@
 		</div>
 
         <!-- category mapping tab -->
-        <div id="tab-categoryMappings" class="hidden tab-content rounded-lg shadow overflow-hidden">
+        <div id="tab-categoryMappings" class="hidden tab-content transition-all ease-in-out rounded-lg shadow overflow-hidden">
 			<div class="p-4 border-b flex justify-between items-center">
 				<h2 class="text-lg font-medium">Wallet Category Operation Type Mappings</h2>
 				<button (click)="toggleForm('mapping')" class="flex items-center px-3 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-opacity-90 whitespace-nowrap">
@@ -665,7 +665,7 @@
 		</div>
 
         <!-- balance history-->
-         <div id="tab-balanceHistory" class="hidden tab-content bg-white rounded-lg shadow overflow-hidden">
+         <div id="tab-balanceHistory" class="hidden tab-content transition-all ease-in-out bg-white rounded-lg shadow overflow-hidden">
 			<div class="p-4 border-b flex justify-between items-center">
 				<h2 class="text-lg font-medium">Wallet Balance History</h2>
 				<div class="flex space-x-2">
@@ -753,7 +753,7 @@
 		</div>
 
         <!-- vat tab -->
-         <div id="tab-vatRates" class="hidden tab-content bg-white rounded-lg shadow overflow-hidden">
+         <div id="tab-vatRates" class="hidden tab-content transition-all ease-in-out bg-white rounded-lg shadow overflow-hidden">
 			<div class="p-4 border-b flex justify-between items-center">
 				<h2 class="text-lg font-medium">VAT Rate Management</h2>
 				<button (click)="toggleForm('vat')" class="flex items-center px-3 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-opacity-90 whitespace-nowrap">
